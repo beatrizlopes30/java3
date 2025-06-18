@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolução Parasitária</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Tela Inicial -->
+        <div id="start-screen" class="game-screen">
+            <h1>Evolução Parasitária</h1>
+            <p>Controle a resistência a antiparasitários em populações de parasitas</p>
+            <div class="button-group">
+                <button id="play-btn" class="btn primary">Jogar</button>
+                <button id="how-to-play-btn" class="btn secondary">Como funciona?</button>
+            </div>
+        </div>
+
+        <!-- Tela Como Funciona -->
+        <div id="how-to-play-screen" class="game-screen hidden">
+            <h2>Como Funciona</h2>
+            <div class="info-card">
+                <p>Bem-vindo(a)! Neste jogo, você é responsável por controlar a resistência a antiparasitários em uma população de parasitas de animais de produção (como bovinos ou equinos).</p>
+                <p>Você tomará decisões que influenciam o genótipo dos parasitas ao longo das gerações.</p>
+                <p class="warning">👉 Cuidado: o uso incorreto de antiparasitários pode aumentar a resistência!</p>
+                
+                <h3>🎯 Conceitos que você vai aprender:</h3>
+                <ul>
+                    <li>Leis de Mendel (dominância e recessividade)</li>
+                    <li>Seleção natural</li>
+                    <li>Frequência gênica</li>
+                    <li>Resistência parasitária</li>
+                </ul>
+            </div>
+            <button id="back-to-start-btn" class="btn">Voltar</button>
+        </div>
+
+        <!-- Tela do Jogo -->
+        <div id="game-screen" class="game-screen hidden">
+            <div class="game-header">
+                <div class="generation-counter">Geração: <span id="generation">1</span></div>
+                <div class="resistance-level">Resistência: <span id="resistance-percentage">30</span>%</div>
+            </div>
+
+            <div class="population-info">
+                <h3>População de Parasitas: <span id="population-size">100</span></h3>
+                <div class="genotype-distribution">
+                    <div class="genotype">
+                        <span class="genotype-label">RR (Resistentes):</span>
+                        <div class="bar-container">
+                            <div class="bar rr-bar" style="width: 40%"></div>
+                            <span class="percentage">40%</span>
+                        </div>
+                    </div>
+                    <div class="genotype">
+                        <span class="genotype-label">Rr (Heterozigotos):</span>
+                        <div class="bar-container">
+                            <div class="bar rR-bar" style="width: 30%"></div>
+                            <span class="percentage">30%</span>
+                        </div>
+                    </div>
+                    <div class="genotype">
+                        <span class="genotype-label">rr (Sensíveis):</span>
+                        <div class="bar-container">
+                            <div class="bar rr-bar" style="width: 30%"></div>
+                            <span class="percentage">30%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="allele-frequency">
+                    <h4>Frequência de Alelos:</h4>
+                    <p>R (Resistência): <span id="R-frequency">55</span>%</p>
+                    <p>r (Sensibilidade): <span id="r-frequency">45</span>%</p>
+                </div>
+            </div>
+
+            <div class="decision-container">
+                <h3>Escolha sua ação para esta geração:</h3>
+                <div class="decision-options">
+                    <button class="decision-btn" data-action="continuous">1. Aplicar antiparasitário continuamente</button>
+                    <button class="decision-btn" data-action="rotation">2. Fazer rotação de classes de drogas</button>
+                    <button class="decision-btn" data-action="integrated">3. Implementar manejo integrado</button>
+                    <button class="decision-btn" data-action="nothing">4. Não fazer nada</button>
+                </div>
+            </div>
+
+            <div class="graph-container">
+                <h3>Evolução da Resistência</h3>
+                <div class="graph">
+                    <div class="graph-lines"></div>
+                    <div class="graph-bars">
+                        <!-- Barras serão adicionadas dinamicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Resultado Final -->
+        <div id="result-screen" class="game-screen hidden">
+            <h2 id="result-title">Resultado Final</h2>
+            <div id="result-message" class="info-card">
+                <!-- Mensagem será preenchida dinamicamente -->
+            </div>
+            <div class="final-stats">
+                <p>Gerações totais: <span id="total-generations">0</span></p>
+                <p>Máxima resistência: <span id="max-resistance">0</span>%</p>
+                <p>Estratégia mais usada: <span id="common-strategy">-</span></p>
+            </div>
+            <div class="button-group">
+                <button id="restart-btn" class="btn primary">Jogar Novamente</button>
+                <button id="back-to-menu-btn" class="btn secondary">Voltar ao Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
